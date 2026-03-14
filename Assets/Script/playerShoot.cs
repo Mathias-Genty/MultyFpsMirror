@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Mirror;
 
@@ -16,6 +17,7 @@ public class playerShoot : NetworkBehaviour
     private WeaponData currentWeapon;
     private WeaponManager weaponManager;
     
+    private bool hasDelay = false;
     
     
     
@@ -101,11 +103,25 @@ public class playerShoot : NetworkBehaviour
         
         if (!isLocalPlayer || weaponManager.isReloading)return;
 
+        if (currentWeapon.fireRate <= 0)
+        {
+            if (hasDelay)
+            {
+                return;
+            }
+            else
+            {
+                StartCoroutine(FireDelay());
+            }
+        }
+
         if (weaponManager.CurrentMagazineSize <= 0)
         {
             StartCoroutine(weaponManager.Reload());
             return;
         }
+        
+        
         
         weaponManager.CurrentMagazineSize--;
         
@@ -133,6 +149,7 @@ public class playerShoot : NetworkBehaviour
             StartCoroutine(weaponManager.Reload());
             return;
         }
+        
     }
 
     [Command]
@@ -146,6 +163,13 @@ public class playerShoot : NetworkBehaviour
         
         
     }
-    
+
+    private IEnumerator FireDelay()
+    {
+        hasDelay = true;
+        yield return new WaitForSeconds(currentWeapon.fireDelay);
+        hasDelay = false;
+        
+    }
     
 }

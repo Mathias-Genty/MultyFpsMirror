@@ -10,6 +10,8 @@ public class WeaponData : ScriptableObject
 
     public float fireRate = 0f;
     
+    public float fireDelay = 1f;
+    
     public int MagazineSize = 30;
     public float reloadTime = 1f;
     

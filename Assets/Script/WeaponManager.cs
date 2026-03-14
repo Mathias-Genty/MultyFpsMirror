@@ -48,7 +48,8 @@ public class WeaponManager : NetworkBehaviour
             primaryWeaponIns.SetActive(false);
             primaryMagazineSize = weapon.MagazineSize;
             primaryWeaponIns.transform.SetParent(weaponHolder);
-            
+            primaryWeapon = weapon;
+
         }
         else
         {
@@ -58,7 +59,7 @@ public class WeaponManager : NetworkBehaviour
             secondaryWeaponIns.SetActive(false);
             secondaryMagazineSize = weapon.MagazineSize;
             secondaryWeaponIns.transform.SetParent(weaponHolder);
-            
+            secondaryWeapon = weapon;
         }
         
     }
@@ -153,7 +154,7 @@ public class WeaponManager : NetworkBehaviour
     {
         if (isReloading)yield break;
         
-        Debug.Log("reloading...");
+        //Debug.Log("reloading...");
         
         isReloading = true;
         CmdOnReload();
@@ -161,7 +162,7 @@ public class WeaponManager : NetworkBehaviour
 
         CurrentMagazineSize = currentWeapon.MagazineSize;
         
-        Debug.Log("reloading finished");
+        //Debug.Log("reloading finished");
         
         isReloading = false;
 
