@@ -33,6 +33,7 @@ public class PickUpWeapon : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             WeaponManager weamponManager = other.GetComponent<WeaponManager>();
+            
             EquipNewWeapon(weamponManager);
             
 
@@ -43,9 +44,10 @@ public class PickUpWeapon : MonoBehaviour
     void EquipNewWeapon(WeaponManager weamponManager)
     {
         
-        Destroy(weamponManager.GetCurrentWeaponGraphics().gameObject);
+        //Destroy(weamponManager.GetCurrentWeaponGraphics().gameObject);
         
-        weamponManager.EquipWeapon(theWeapon);
+        weamponManager.Setup(theWeapon);
+        weamponManager.EquipWeapon(theWeapon.isPrimary);
         
         Destroy(pickUpGraphics);
         

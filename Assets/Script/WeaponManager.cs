@@ -8,7 +8,10 @@ public class WeaponManager : NetworkBehaviour
     [SerializeField] private WeaponData primaryWeapon;
     [SerializeField] private WeaponData secondaryWeapon;
 
-    private GameObject weaponIns;
+    private GameObject primaryWeaponIns;
+    private GameObject secondaryWeaponIns;
+    private GameObject currentweaponIns;
+    
 
     private WeaponData currentWeapon;
     private weaponGraphics currentGraphics;
@@ -20,12 +23,44 @@ public class WeaponManager : NetworkBehaviour
     
     [HideInInspector]
     public int CurrentMagazineSize;
+    
+    private int primaryMagazineSize;
+    private int secondaryMagazineSize;
      
     public bool isReloading = false;
     
     void Start()
     {
-        EquipWeapon(primaryWeapon);
+        Setup(primaryWeapon);
+        Setup(secondaryWeapon);
+        
+        EquipWeapon(true);
+    }
+
+    public void Setup(WeaponData weapon)
+    {
+        
+        if (weapon.isPrimary)
+        { 
+            Debug.logger.Log("Setup Primary");
+            Destroy(primaryWeaponIns);
+            primaryWeaponIns =  Instantiate(weapon.graphics, weaponHolder.position, weaponHolder.rotation);
+            primaryWeaponIns.SetActive(false);
+            primaryMagazineSize = weapon.MagazineSize;
+            primaryWeaponIns.transform.SetParent(weaponHolder);
+            
+        }
+        else
+        {
+            Debug.logger.Log("Setup Secondary");
+            Destroy(secondaryWeaponIns);
+            secondaryWeaponIns = Instantiate(weapon.graphics, weaponHolder.position, weaponHolder.rotation);
+            secondaryWeaponIns.SetActive(false);
+            secondaryMagazineSize = weapon.MagazineSize;
+            secondaryWeaponIns.transform.SetParent(weaponHolder);
+            
+        }
+        
     }
 
     public WeaponData GetCurrentWeapon()
@@ -40,33 +75,50 @@ public class WeaponManager : NetworkBehaviour
         
     }
 
-    public void EquipWeapon(WeaponData _weapon)
+    public void EquipWeapon(bool primary)
     {
-        currentWeapon = _weapon;
-        CurrentMagazineSize = _weapon.MagazineSize;
         
-        weaponIns =  Instantiate(_weapon.graphics, weaponHolder.position, weaponHolder.rotation);
-        weaponIns.transform.SetParent(weaponHolder);
+        primaryWeaponIns.SetActive(false);
+        secondaryWeaponIns.SetActive(false);
 
-        currentGraphics = weaponIns.GetComponent<weaponGraphics>();
 
+        if (primary)
+        {
+            currentWeapon = primaryWeapon;
+            currentweaponIns = primaryWeaponIns;
+            CurrentMagazineSize = primaryMagazineSize;
+        }
+        else
+        {
+            currentWeapon = secondaryWeapon;
+            currentweaponIns = secondaryWeaponIns;
+            CurrentMagazineSize = secondaryMagazineSize;
+        }
+        
+        currentweaponIns.SetActive(true);
+
+        currentGraphics = currentweaponIns.GetComponent<weaponGraphics>();
+
+        
         if (currentGraphics == null)
         {
-            Debug.LogError("pas de scripts weapon graphics sur l'arme : " + weaponIns.name);
+            Debug.LogError("pas de scripts weapon graphics sur l'arme : " + currentweaponIns.name);
         }
         
         if (isLocalPlayer)
         {
-            Util.SetLayerRecursively(weaponIns, LayerMask.NameToLayer(WeaponLayerName));
+            Util.SetLayerRecursively(currentweaponIns, LayerMask.NameToLayer(WeaponLayerName));
         }
         
         
     }
-
+    
     public void changeWeapon()
     {
         
         if(!isLocalPlayer)return;
+        if(isReloading)return;
+        
         CmdChangeWeapon();
         
     }
@@ -80,16 +132,20 @@ public class WeaponManager : NetworkBehaviour
     [ClientRpc]
     void RpcChangeWeapon()
     {
-        Destroy(weaponIns);
+
+        bool primary = currentWeapon.isPrimary;
         
-        if (currentWeapon.isPrimary)
+        if (primary)
         {
-            EquipWeapon(secondaryWeapon);
+            primaryMagazineSize = CurrentMagazineSize;
         }
         else
         {
-            EquipWeapon(primaryWeapon);
+            secondaryMagazineSize = CurrentMagazineSize;
         }
+        
+        EquipWeapon(!primary);
+        
         
     }
 
