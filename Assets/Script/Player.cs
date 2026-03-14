@@ -120,7 +120,7 @@ public class Player : NetworkBehaviour
         
         if (Input.GetKey(KeyCode.K))
         {
-            RPCTakeDamage(1 , "joueur");
+            RPCTakeDamage(10 , "joueur");
             
         }
     }
