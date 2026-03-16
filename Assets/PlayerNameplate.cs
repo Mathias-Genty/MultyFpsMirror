@@ -11,6 +11,7 @@ public class PlayerNameplate : MonoBehaviour
     [SerializeField] private RectTransform healthBarFill;
     
     
+    
     void Update()
     {
         usernameText.text = player.username;

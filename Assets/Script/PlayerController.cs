@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        
         motor = GetComponent<PlayerMotor>();
         joint = GetComponent<ConfigurableJoint>();
         animator = GetComponent<Animator>();
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
             if (thrusterFuelAmount >= 0.01f)
             {
-            thrusterVelocity =  transform.up * thrusterForce;
+            thrusterVelocity =  Vector3.up * thrusterForce;
             SetJointSettings(0f);
             }
         }

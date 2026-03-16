@@ -788,11 +788,11 @@ GameObject:
   - component: {fileID: -7605783975407130050}
   - component: {fileID: 9124352171144858849}
   - component: {fileID: 8085088103586961975}
+  - component: {fileID: -2472927319608764710}
   - component: {fileID: -2781339257553115159}
   - component: {fileID: 2425364304559093184}
   - component: {fileID: -4830490648973324592}
   - component: {fileID: 4401890324358595920}
-  - component: {fileID: -2472927319608764710}
   - component: {fileID: 5299182899855183165}
   - component: {fileID: -4120950445072893582}
   m_Layer: 8
@@ -966,6 +966,25 @@ MonoBehaviour:
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
   target: {fileID: 7932980279678674609}
+--- !u!114 &-2472927319608764710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932980281022015618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.05
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+  target: {fileID: 4887987881006081237}
 --- !u!153 &-2781339257553115159
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -1024,9 +1043,9 @@ ConfigurableJoint:
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
-    positionSpring: 20
+    positionSpring: 0
     positionDamper: 0
-    maximumForce: 50
+    maximumForce: 0
   m_ZDrive:
     serializedVersion: 3
     positionSpring: 0
@@ -1129,25 +1148,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-2472927319608764710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7932980281022015618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 734b48bea0b204338958ee3d885e11f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  localPositionSensitivity: 0.01
-  localRotationSensitivity: 0.01
-  localScaleSensitivity: 0.01
-  target: {fileID: 4887987881006081237}
 --- !u!114 &5299182899855183165
 MonoBehaviour:
   m_ObjectHideFlags: 0

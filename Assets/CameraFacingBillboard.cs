@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CameraFacingBillboard : MonoBehaviour
 {
-
-    
-    
-    void Update()
+    private Camera cam;
+    private void Start()
     {
-        Camera cam = Camera.main;
-        
-   
+        cam = Camera.main;
+    }
+
+
+    void LateUpdate()
+    {
+
+        if (cam != null)
+        {
             transform.LookAt(transform.position + cam.transform.rotation * Vector3.forward, cam.transform.rotation * Vector3.up);
+        }
             
         
     }

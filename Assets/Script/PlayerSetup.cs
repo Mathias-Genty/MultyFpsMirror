@@ -96,6 +96,17 @@ public class PlayerSetup : NetworkBehaviour
         {
             conponentsToDisable[i].enabled = false;
         }
+        
+        ConfigurableJoint joint = GetComponent<ConfigurableJoint>();
+
+        if (joint != null)
+        {
+            joint.yDrive = new JointDrive
+            {
+                positionSpring = 0,
+                maximumForce = 0
+            };
+        }
     }
 
     private void AsignRemoteLayer()
