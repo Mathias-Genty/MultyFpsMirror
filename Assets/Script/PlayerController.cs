@@ -32,8 +32,11 @@ public class PlayerController : MonoBehaviour
     private PlayerMotor motor;
     private ConfigurableJoint joint;
     private Animator animator;
-
+    private Player player;
+    
     private WeaponManager weaponManager;
+    
+    private bool isInGame = false;
 
     
     void Start()
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         joint = GetComponent<ConfigurableJoint>();
         animator = GetComponent<Animator>();
         weaponManager = GetComponent<WeaponManager>();
+        player = GetComponent<Player>();
         
         SetJointSettings(jointSpring);
 
@@ -50,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!player.isReady)return;
+        
         if (PauseMenu.isOn)
         {
             
@@ -150,7 +156,7 @@ public class PlayerController : MonoBehaviour
         joint.yDrive = new JointDrive { positionSpring = _jointSpring, maximumForce = jointMaxForce };
     }
     
-    
+ 
     
     
 }

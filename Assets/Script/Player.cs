@@ -45,6 +45,8 @@ public class Player : NetworkBehaviour
 
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private AudioClip deathSound;
+
+    public bool isReady = false;
     
     public void SetUp()
     {

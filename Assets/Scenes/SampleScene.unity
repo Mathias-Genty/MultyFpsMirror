@@ -9055,6 +9055,7 @@ MonoBehaviour:
   syncInterval: 0.1
   matchSetting:
     respawnTimer: 2
+  isInGame: 0
   sceneCamera: {fileID: 963194225}
   min: 9
   sec: 59.9

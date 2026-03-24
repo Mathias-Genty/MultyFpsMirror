@@ -15,6 +15,9 @@ public class PlayerUi : MonoBehaviour
     
     [SerializeField]private GameObject pauseMenu;
     [SerializeField]private GameObject ScoreMenu;
+    
+    [SerializeField]private GameObject inGameUI;
+    [SerializeField]private GameObject lobbyMenu;
 
     [SerializeField] private Text AmmoText;
     
@@ -22,6 +25,8 @@ public class PlayerUi : MonoBehaviour
     public int sec;
     public int min;
     public string timeString = "test";
+    
+    bool isInGame = false;
     
     
 
@@ -35,10 +40,16 @@ public class PlayerUi : MonoBehaviour
     void Start()
     {
         PauseMenu.isOn = false;
+        inGameUI.SetActive(false);
+        lobbyMenu.SetActive(true);
+        
+        
     }
     
     private void Update()
     {
+        if (!isInGame) return;
+        
         SetFuellAmount(controller.GetThrusterFuelAmount());
         SetHealthAmount(player.GetHealthPct());
         SetAmmoAmount(weaponManager.CurrentMagazineSize);
@@ -92,5 +103,17 @@ public class PlayerUi : MonoBehaviour
         
         timerText.text = timeString;
     }
+
+    public void GameLunch(int _mode)
+    {
+        isInGame = true;
+        player.isReady = true;
+        inGameUI.SetActive(true);
+        lobbyMenu.SetActive(false);
+        GameManager.instance.LunchGame(_mode);
+        
+        
+    }
+    
     
 }

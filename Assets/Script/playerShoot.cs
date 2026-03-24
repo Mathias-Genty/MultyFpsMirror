@@ -16,6 +16,7 @@ public class playerShoot : NetworkBehaviour
     [SerializeField] private GameObject bulletHole;
     private WeaponData currentWeapon;
     private WeaponManager weaponManager;
+    private Player player;
     
     private bool hasDelay = false;
     
@@ -32,10 +33,14 @@ public class playerShoot : NetworkBehaviour
         }
         
         weaponManager = GetComponent<WeaponManager>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
+        if (!player.isReady)return;
+        
+        
         currentWeapon = weaponManager.GetCurrentWeapon();
         
         if(PauseMenu.isOn)return;

@@ -11,6 +11,9 @@ public class GameManager : NetworkBehaviour
     private const string playerIdPrefix = "Player_";
 
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
+
+    [SyncVar]public int GameMode = 0;
+    [SyncVar]public bool isGameLunch = false;
     
     [SerializeField]GameObject sceneCamera;
 
@@ -84,6 +87,12 @@ public class GameManager : NetworkBehaviour
     public static Player[] GetAllPlayers()
     {
         return players.Values.ToArray();
+    }
+    
+    public void LunchGame(int _mode)
+    {
+        GameMode = _mode;
+        
     }
     
      
