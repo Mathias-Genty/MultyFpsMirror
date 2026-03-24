@@ -1098,6 +1098,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 567
+  bulletHole: {fileID: 7590516605821022368, guid: d7633701d3865d04985799fccc2c56e9,
+    type: 3}
 --- !u!114 &-4830490648973324592
 MonoBehaviour:
   m_ObjectHideFlags: 0

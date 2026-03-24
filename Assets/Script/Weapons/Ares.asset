@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43537946dd68c0641b8e34c4b3875c78, type: 3}
-  m_Name: SuMachineGun Test
+  m_Name: Ares
   m_EditorClassIdentifier: 
   name: Submachine Gun
-  damage: 5
+  damage: 25
   range: 100
-  fireRate: 15
+  fireRate: 13
   fireDelay: 1
   MagazineSize: 50
-  reloadTime: 3
-  graphics: {fileID: 3889161607667978882, guid: 9708de61667c1f84aa3557bf90e8c988,
+  reloadTime: 3.35
+  graphics: {fileID: 1599589501028650197, guid: db39d6dd99402184f99f13dff645d6e3,
     type: 3}
   shootSound: {fileID: 8300000, guid: c845d400a5b33834b8ba0e34eeaee175, type: 3}
   reloadSound: {fileID: 8300000, guid: b014bed1e24c38d4dac2734f2a9bf85e, type: 3}

@@ -377,7 +377,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1234731276
+--- !u!1001 &1862845243
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -443,6 +443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NetworkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 896599784285895922, guid: e49cb61825733b0458fcde1b3b760279,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e49cb61825733b0458fcde1b3b760279, type: 3}

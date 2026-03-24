@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43537946dd68c0641b8e34c4b3875c78, type: 3}
-  m_Name: SuMachineGun
+  m_Name: Vandal
   m_EditorClassIdentifier: 
   name: Submachine Gun
-  damage: 20
+  damage: 30
   range: 100
-  fireRate: 13
+  fireRate: 9.75
   fireDelay: 1
-  MagazineSize: 30
-  reloadTime: 1.5
-  graphics: {fileID: 3889161607667978882, guid: 9708de61667c1f84aa3557bf90e8c988,
+  MagazineSize: 25
+  reloadTime: 2.5
+  graphics: {fileID: 2326458307215676971, guid: d2ef2d2d89e6ea2408b6a07f4071412e,
     type: 3}
   shootSound: {fileID: 8300000, guid: c845d400a5b33834b8ba0e34eeaee175, type: 3}
   reloadSound: {fileID: 8300000, guid: b014bed1e24c38d4dac2734f2a9bf85e, type: 3}
